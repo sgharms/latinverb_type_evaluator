@@ -40,8 +40,8 @@ module Linguistics
             elsif (present_active_infinitive =~ DEPONENT_VERB_PRESENT_ACTIVE_INFINITIVE_ENDING and first_person_singular =~ DEPONENT_VERB_FIRST_PERSON_SINGULAR_ENDING)
               str = DeponentStringDeriver.new(@verb.original_string).proxy_string.split(/\s+/)
               Linguistics::Latin::Verb::LatinVerb::TypeEvaluator.new(OpenStruct.new(
-                first_person_singular: str.first,
-                present_active_infinitive: str.last
+                first_person_singular: str.shift,
+                present_active_infinitive: str.shift
               )).type
             # Sometimes something is not classified as irregular but has
             # aberrations e.g. pluit.  Try to pull it from storage.
